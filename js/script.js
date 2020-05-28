@@ -1,35 +1,34 @@
 // Prompt user to enter the desired number of characters in the password.
 // This can be edited by using the scroll bar or number field below.
-// The default character set is 
-// Users can also select which character groups 
-
+// The default character set is
+// Users can also select which character groups
 
 // While loop to prevent inputs that are non-integer, blank, over or below the limit.
 // While loop will break on Cancel by user.
 
-while((!Number.isInteger(initialNumChar))||(initialNumChar<4)||(initialNumChar>32)){
-
-var initialNumChar = prompt("Please enter a desired number of characters between 4 and 32 for the password. You can edit this and select allowable characters below.")
-if(initialNumChar===null) break;
-initialNumChar=parseInt(initialNumChar)
-
+while (
+  !Number.isInteger(initialNumChar) ||
+  initialNumChar < 8 ||
+  initialNumChar > 128
+) {
+  var initialNumChar = prompt(
+    "Please enter a desired number of characters between 8 and 128 for the password. You can edit this and select allowable characters below."
+  );
+  if (initialNumChar === null) break;
+  initialNumChar = parseInt(initialNumChar);
 }
-
 
 // Get the elements containing the following from the DOM using their ID:
 // Number of characters by range (slider position) and number, whether to include upper case,
 // numbers and special characters
-
-
-
 
 var numCharRangeElement = document.getElementById("numCharRange");
 var numCharNumberElement = document.getElementById("numCharNumber");
 var includeUppercaseElement = document.getElementById("includeUppercase");
 var includeNumbersElement = document.getElementById("includeNumbers");
 var includeSpecialCharsElement = document.getElementById("includeSpecialChars");
-numCharNumberElement.value = initialNumChar
-numCharRangeElement.value = initialNumChar
+numCharNumberElement.value = initialNumChar;
+numCharRangeElement.value = initialNumChar;
 
 // A function to synchronize the input from the slider to the numerical input.
 function syncCharacterAmount(event) {
@@ -38,15 +37,10 @@ function syncCharacterAmount(event) {
   numCharRangeElement.value = value;
 }
 
-
-
-
 // Event listeners for number input and slider input
 // syntax: element.addEventListener(event, function)
 numCharNumberElement.addEventListener("input", syncCharacterAmount);
 numCharRangeElement.addEventListener("input", syncCharacterAmount);
-
-
 
 // A function to generate numerical ASCII codes from a lower limit to an upper limit
 // corresponding to different groups of characters.
@@ -69,23 +63,18 @@ var specialCharCodes = asciiCodeGen(33, 47)
   .concat(asciiCodeGen(91, 96))
   .concat(asciiCodeGen(123, 126));
 
-
-
-
 // create a variable called generateBtn. Assign it the element of ID generate (ID of the button)
 var generateBtn = document.querySelector("#generate");
-
 
 // A function to generate the password.
 // Takes in arguments for no. of characters and allowed character types.
 // Lower case characters are the default option.
 // 3 if statements either include or exclude character groups based on user selection.
-// As a new character group is selected, the ASCII character code array is appended to the 
+// As a new character group is selected, the ASCII character code array is appended to the
 // current character codes array.
 // passwordCharacters is an array of all allowed characters based on user selection.
 // A for loop runs for a number of iterations equalling the password length and selects
 // a random character from the array of allowed characters.
-
 
 function generatePassword(
   characterAmount,
@@ -106,8 +95,7 @@ function generatePassword(
 
   var passwordCharacters = [];
   for (let i = 0; i < characterAmount; i++) {
-    var characterCode =
-      charCodes[Math.floor(Math.random() * charCodes.length)];
+    var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
     passwordCharacters.push(String.fromCharCode(characterCode));
   }
   return passwordCharacters.join("");
