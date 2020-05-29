@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <!--Text area for generated password  -->
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
+          <!-- Input for range or number of characters by the user -->
+          <label for="numCharNumber">Number of Characters</label>
+          <input type="range" min="8" max="128" id="numCharRange" />
+          <input type="number" min="8" max="128" id="numCharNumber" />
+          <br /><br />
+          <!-- Check boxes for allowable character types in the password -->
+          <label for="includeUppercase">Include Upper Case</label>
+          <input type="checkbox" id="includeUppercase" />
+          <br />
+          <label for="includeNumbers">Include Numbers</label>
+          <input type="checkbox" id="includeNumbers" />
+          <br />
+          <label for="includeSpecialChars">Include Special Characters</label>
+          <input type="checkbox" id="includeSpecialChars" />
+        </div>
+        <div class="card-footer">
+          <!-- Generate Button -->
+          <button type="submit" id="generate" class="btn">
+            Generate Password
+          </button>
+
+          
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
