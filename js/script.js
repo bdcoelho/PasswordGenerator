@@ -6,16 +6,14 @@
 // While loop to prevent inputs that are non-integer, blank, over or below the limit.
 // While loop will break on Cancel by user.
 function passwordGen() {
-var initialUppercase = { Value: false, UserInput: "" };
-var initialNumbers = { Value: false, UserInput: "" };
-var initialSpecialChars = { Value: false, UserInput: "" };
+var initialUppercase = {name: "uppercase letter characters" ,Value: false, UserInput: "" };
+var initialNumbers = {name: "number characters", Value: false, UserInput: "" };
+var initialSpecialChars = {name: "special characters", Value: false, UserInput: "" };
 
 var passwordCriteria = [initialUppercase, initialNumbers, initialSpecialChars];
-var passwordCriteriaName = [
-  "uppercase ",
-  "number ",
-  "special ",
-];
+
+
+alert("The default character type is lower case letters. Press OK to select other character types.")
 
 
   function charValidation(i) {
@@ -26,8 +24,8 @@ var passwordCriteriaName = [
     ) {
       passwordCriteria[i].UserInput = prompt(
         "Would you like to include " +
-          passwordCriteriaName[i] +
-          "characters in your password? Enter (Y/N) or (Esc/Cancel) to exit."
+        passwordCriteria[i].name +
+          " in your password? Enter (Y/N) or (Esc/Cancel) to exit."
       );
       passwordCriteria[i].UserInput = passwordCriteria[
         i
@@ -58,31 +56,6 @@ var passwordCriteriaName = [
   // Get the elements containing the following from the DOM using their ID:
   // Number of characters by range (slider position) and number, whether to include upper case,
   // numbers and special characters
-
-  var numCharRangeElement = document.getElementById("numCharRange");
-  var numCharNumberElement = document.getElementById("numCharNumber");
-  var includeUppercaseElement = document.getElementById("includeUppercase");
-  var includeNumbersElement = document.getElementById("includeNumbers");
-  var includeSpecialCharsElement = document.getElementById(
-    "includeSpecialChars"
-  );
-  numCharNumberElement.value = initialNumChar;
-  numCharRangeElement.value = initialNumChar;
-  includeUppercaseElement.checked = initialUppercase.Value;
-  includeNumbersElement.checked = initialNumbers.Value;
-  includeSpecialCharsElement.checked = initialSpecialChars.Value;
-
-  // A function to synchronize the input from the slider to the numerical input.
-  function syncCharacterAmount(event) {
-    var value = event.target.value;
-    numCharNumberElement.value = value;
-    numCharRangeElement.value = value;
-  }
-
-  // Event listeners for number input and slider input
-  // syntax: element.addEventListener(event, function)
-  numCharNumberElement.addEventListener("input", syncCharacterAmount);
-  numCharRangeElement.addEventListener("input", syncCharacterAmount);
 
   // A function to generate numerical ASCII codes from a lower limit to an upper limit
   // corresponding to different groups of characters.
@@ -123,15 +96,20 @@ var passwordCriteriaName = [
     includeNumbers,
     includeSpecialChars
   ) {
+
     let charCodes = lowerCharCodes;
+    document.querySelector("#id0").innerHTML = "wheeeeeeeee";
     if (includeUppercase) {
       charCodes = charCodes.concat(upperCharCodes);
+      document.querySelector("#id1").innerHTML = initialUppercase.name;
     }
     if (includeSpecialChars) {
       charCodes = charCodes.concat(specialCharCodes);
+      document.querySelector("#id3").innerHTML = initialSpecialChars.name;
     }
     if (includeNumbers) {
       charCodes = charCodes.concat(numberCharCodes);
+      document.querySelector("#id2").innerHTML = initialNumbers.name;
     }
 
     var passwordCharacters = [];
@@ -140,6 +118,7 @@ var passwordCriteriaName = [
         charCodes[Math.floor(Math.random() * charCodes.length)];
       passwordCharacters.push(String.fromCharCode(characterCode));
     }
+    document.querySelector("#id4").innerHTML = "Your password length is: " + initialNumChar + " characters";
     return passwordCharacters.join("");
   }
 
@@ -154,20 +133,20 @@ var passwordCriteriaName = [
   // Function calls the generate password function
   function writePassword() {
     event.preventDefault();
-    var characterAmount = numCharNumberElement.value;
-    var includeUppercase = includeUppercaseElement.checked;
-    var includeNumbers = includeNumbersElement.checked;
-    var includeSpecialChars = includeSpecialCharsElement.checked;
+
     var password = generatePassword(
-      characterAmount,
-      includeUppercase,
-      includeNumbers,
-      includeSpecialChars
+      initialNumChar,
+      initialUppercase,
+      initialNumbers,
+      initialSpecialChars
     );
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
   writePassword();
+
+
+
 }
 // Add event listener to generate button.
 // When event "click" is detected on the button element, "generateBtn", run the write password function
