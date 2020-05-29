@@ -6,7 +6,7 @@
 // While loop to prevent inputs that are non-integer, blank, over or below the limit.
 // While loop will break on Cancel by user.
 function passwordGen() {
-var initialUppercase = {name: "uppercase letter characters" ,Value: false, UserInput: "" };
+var initialUppercase = {name: "uppercase letter characters", Value: false, UserInput: "" };
 var initialNumbers = {name: "number characters", Value: false, UserInput: "" };
 var initialSpecialChars = {name: "special characters", Value: false, UserInput: "" };
 
@@ -27,9 +27,7 @@ alert("The default character type is lower case letters. Press OK to select othe
         passwordCriteria[i].name +
           " in your password? Enter (Y/N) or (Esc/Cancel) to exit."
       );
-      passwordCriteria[i].UserInput = passwordCriteria[
-        i
-      ].UserInput.toUpperCase();
+      passwordCriteria[i].UserInput = passwordCriteria[i].UserInput.toUpperCase();
       if (passwordCriteria[i] === null) break;
     }
     passwordCriteria[i].Value = passwordCriteria[i].UserInput === "Y";
@@ -39,7 +37,6 @@ alert("The default character type is lower case letters. Press OK to select othe
     charValidation(i);
   }
 
-  console.log(passwordCriteria[1].Value);
 
   while (
     !Number.isInteger(initialNumChar) ||
@@ -52,6 +49,23 @@ alert("The default character type is lower case letters. Press OK to select othe
     if (initialNumChar === null) break;
     initialNumChar = parseInt(initialNumChar);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Get the elements containing the following from the DOM using their ID:
   // Number of characters by range (slider position) and number, whether to include upper case,
@@ -66,7 +80,7 @@ alert("The default character type is lower case letters. Press OK to select othe
     }
     return array;
   }
-
+  
   // Generate ASCII codes for different groups of characters
   // Source: https://catonmat.net/ascii-cheat-sheet
 
@@ -90,30 +104,42 @@ alert("The default character type is lower case letters. Press OK to select othe
   // A for loop runs for a number of iterations equalling the password length and selects
   // a random character from the array of allowed characters.
 
+
   function generatePassword(
-    characterAmount,
-    includeUppercase,
-    includeNumbers,
-    includeSpecialChars
+    initialNumChar,
+    initialUppercase,
+    initialNumbers,
+    initialSpecialChars
   ) {
 
     let charCodes = lowerCharCodes;
-    document.querySelector("#id0").innerHTML = "wheeeeeeeee";
-    if (includeUppercase) {
+
+
+
+    document.querySelector("#id0").innerHTML = "You have selected";
+
+
+
+    console.log(initialUppercase.name)
+
+
+
+
+    if (initialUppercase.Value) {
       charCodes = charCodes.concat(upperCharCodes);
       document.querySelector("#id1").innerHTML = initialUppercase.name;
     }
-    if (includeSpecialChars) {
+    if (initialSpecialChars.Value) {
       charCodes = charCodes.concat(specialCharCodes);
       document.querySelector("#id3").innerHTML = initialSpecialChars.name;
     }
-    if (includeNumbers) {
+    if (initialNumbers.Value) {
       charCodes = charCodes.concat(numberCharCodes);
       document.querySelector("#id2").innerHTML = initialNumbers.name;
     }
 
     var passwordCharacters = [];
-    for (let i = 0; i < characterAmount; i++) {
+    for (let i = 0; i < initialNumChar; i++) {
       var characterCode =
         charCodes[Math.floor(Math.random() * charCodes.length)];
       passwordCharacters.push(String.fromCharCode(characterCode));
@@ -122,18 +148,10 @@ alert("The default character type is lower case letters. Press OK to select othe
     return passwordCharacters.join("");
   }
 
-  // A function to write the password to an element of ID "password"
-  // Parameters for password are as follows:
-
-  // characterAmount - number of characters
-  // includeUppercase - boolean to include/exclude upper case characters
-  // includeNumbers - boolean to include/exclude number characters
-  // includeSpecialChars - boolean to include/exclude special characters
 
   // Function calls the generate password function
   function writePassword() {
     event.preventDefault();
-
     var password = generatePassword(
       initialNumChar,
       initialUppercase,
@@ -143,6 +161,10 @@ alert("The default character type is lower case letters. Press OK to select othe
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
+
+
+
+
   writePassword();
 
 
