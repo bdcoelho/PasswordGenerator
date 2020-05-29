@@ -46,7 +46,7 @@ function passwordGen() {
     }
     passwordCriteria[i].Value = passwordCriteria[i].UserInput === "Y";
   }
-// For loop to pass each of the criteria (excluding number of characters) to the prompt and validation function.
+  // For loop to pass each of the criteria (excluding number of characters) to the prompt and validation function.
   for (let i = 0; i < passwordCriteria.length; i++) {
     charValidation(i);
   }
@@ -86,7 +86,6 @@ function passwordGen() {
     .concat(asciiCodeGen(91, 96))
     .concat(asciiCodeGen(123, 126));
 
-
   // A function to generate the password.
   // Takes in arguments for no. of characters and allowed character types.
   // Lower case characters are the default option.
@@ -105,7 +104,7 @@ function passwordGen() {
   ) {
     let charCodes = lowerCharCodes;
 
-    Edit HTML to dispay message to users after password generation. A message notifying the user of password criteria and length will be displayed
+    // Edit HTML to display message to users after password generation. A message notifying the user of password criteria and length will be displayed
     document.querySelector("#id0").innerHTML = "You have selected";
 
     if (initialUppercase.Value) {
