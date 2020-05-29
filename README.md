@@ -4,80 +4,32 @@
 https://bdcoelho.github.io/PasswordGenerator/
 
 
+## Description
+
+The password generator allows a user to generate a password of desired length from 8 to 128 characters that meets a set of criteria that the user may select. On loading the website, the user is presented with a series of prompts to include or exclude types of characters in the password. The default character set is lowercase letters
+
+The criteria are as follows:
+
+* Include uppercase characters
+* Include numeric characters
+* Include special characters
+* Number of characters to include
+
+Once the password is generated, it is displayed on the screen and the user may select and copy it.
+
+## Method
+
+The program uses arrays of ASCII codes to group each set of characters. Once the user selects the character type criteria, the program concatenates the relevant arrays into a combined array of allowable characters. A for loop then iterates for the number of characters required in the password, randomly selecting a character from the array of allowable characters. The user input is validated for (Y/N) for each of the character criteria and blank inputs are not accepted. The password length input is checked to ensure that the entry is numeric, non-blank and within the limits provided (8-128 characters).
+
+
+## Screenshots
 
 
 
+## Future work
+Additional features were considered and some were partially implemented. These were archived as they required improvement and further testing. Some additional features that may be added in the future are:
 
-
-
-
-
-
-# 03 JavaScript: Password Generator
-
-Create an application that generates a random password based on user-selected criteria. 
-
-This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. 
-
-It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
-
-If you are unfamiliar with special characters, take a look at [some examples](https://www.owasp.org/index.php/Password_special_characters).
-
-## User Story
-
-```
-AS AN employee with access to sensitive data
-
-I WANT to randomly generate a password that meets certain criteria
-
-SO THAT I can create a strong password that provides greater security
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I need a new, secure password
-
-WHEN I click the button to generate a password
-
-THEN I am presented with a series of prompts for password criteria
-
-WHEN prompted for password criteria
-
-THEN I select which criteria to include in the password
-
-WHEN prompted for the length of the password
-
-THEN I choose a length of at least 8 characters and no more than 128 characters
-
-WHEN prompted for character types to include in the password
-
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-
-WHEN I answer each prompt
-
-THEN my input should be validated and at least one character type should be selected
-
-WHEN all prompts are answered
-
-THEN a password is generated that matches the selected criteria
-
-WHEN the password is generated
-
-THEN the password is either displayed in an alert or written to the page
-```
-
-The following image demonstrates the application functionality:
-
-![password generator demo](./Assets/03-javascript-homework-demo.png)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+* Interactive entry of criteria directly on the page rather than via prompts
+* Auto copy to clipboard rather or via a copy button
+* Default password criteria
+* Improve page aesthetics

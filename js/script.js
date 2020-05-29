@@ -132,7 +132,7 @@ function passwordGen() {
     return passwordCharacters.join("");
   }
 
-  // Function calls the generate password function
+  // Function calls the generate password function and passes user inputs as arguments
   function writePassword() {
     event.preventDefault();
     var password = generatePassword(
