@@ -1,21 +1,33 @@
-// Prompt user to enter the desired number of characters in the password.
-// This can be edited by using the scroll bar or number field below.
-// The default character set is
-// Users can also select which character groups
+// Declaration of password criteria variables
 
-// While loop to prevent inputs that are non-integer, blank, over or below the limit.
-// While loop will break on Cancel by user.
 function passwordGen() {
-var initialUppercase = {name: "uppercase letter characters", Value: false, UserInput: "" };
-var initialNumbers = {name: "number characters", Value: false, UserInput: "" };
-var initialSpecialChars = {name: "special characters", Value: false, UserInput: "" };
+  var initialUppercase = {
+    name: "uppercase letter characters",
+    Value: false,
+    UserInput: "",
+  };
+  var initialNumbers = {
+    name: "number characters",
+    Value: false,
+    UserInput: "",
+  };
+  var initialSpecialChars = {
+    name: "special characters",
+    Value: false,
+    UserInput: "",
+  };
 
-var passwordCriteria = [initialUppercase, initialNumbers, initialSpecialChars];
+  var passwordCriteria = [
+    initialUppercase,
+    initialNumbers,
+    initialSpecialChars,
+  ];
 
+  alert(
+    "The default character type is lower case letters. Press OK to select other character types."
+  );
 
-alert("The default character type is lower case letters. Press OK to select other character types.")
-
-
+  // A function to prompt user to enter password criteria and validate user inputs
   function charValidation(i) {
     var valCondition1 = ["Y", "N"];
     while (
@@ -24,20 +36,23 @@ alert("The default character type is lower case letters. Press OK to select othe
     ) {
       passwordCriteria[i].UserInput = prompt(
         "Would you like to include " +
-        passwordCriteria[i].name +
+          passwordCriteria[i].name +
           " in your password? Enter (Y/N) or (Esc/Cancel) to exit."
       );
-      passwordCriteria[i].UserInput = passwordCriteria[i].UserInput.toUpperCase();
+      passwordCriteria[i].UserInput = passwordCriteria[
+        i
+      ].UserInput.toUpperCase();
       if (passwordCriteria[i] === null) break;
     }
     passwordCriteria[i].Value = passwordCriteria[i].UserInput === "Y";
   }
-
+// For loop to pass each of the criteria (excluding number of characters) to the prompt and validation function.
   for (let i = 0; i < passwordCriteria.length; i++) {
     charValidation(i);
   }
 
-
+  // While loop to prevent inputs that are non-integer, blank, over or below the limit.
+  // While loop will break on Cancel by user.
   while (
     !Number.isInteger(initialNumChar) ||
     initialNumChar < 8 ||
@@ -50,28 +65,7 @@ alert("The default character type is lower case letters. Press OK to select othe
     initialNumChar = parseInt(initialNumChar);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Get the elements containing the following from the DOM using their ID:
-  // Number of characters by range (slider position) and number, whether to include upper case,
-  // numbers and special characters
-
-  // A function to generate numerical ASCII codes from a lower limit to an upper limit
+  // A function to generate numerical ASCII codes from a numerical lower limit to upper limit
   // corresponding to different groups of characters.
   function asciiCodeGen(limitLow, limitHigh) {
     var array = [];
@@ -80,7 +74,7 @@ alert("The default character type is lower case letters. Press OK to select othe
     }
     return array;
   }
-  
+
   // Generate ASCII codes for different groups of characters
   // Source: https://catonmat.net/ascii-cheat-sheet
 
@@ -92,7 +86,6 @@ alert("The default character type is lower case letters. Press OK to select othe
     .concat(asciiCodeGen(91, 96))
     .concat(asciiCodeGen(123, 126));
 
-  // create a variable called generateBtn. Assign it the element of ID generate (ID of the button)
 
   // A function to generate the password.
   // Takes in arguments for no. of characters and allowed character types.
@@ -104,26 +97,16 @@ alert("The default character type is lower case letters. Press OK to select othe
   // A for loop runs for a number of iterations equalling the password length and selects
   // a random character from the array of allowed characters.
 
-
   function generatePassword(
     initialNumChar,
     initialUppercase,
     initialNumbers,
     initialSpecialChars
   ) {
-
     let charCodes = lowerCharCodes;
 
-
-
+    Edit HTML to dispay message to users after password generation. A message notifying the user of password criteria and length will be displayed
     document.querySelector("#id0").innerHTML = "You have selected";
-
-
-
-    console.log(initialUppercase.name)
-
-
-
 
     if (initialUppercase.Value) {
       charCodes = charCodes.concat(upperCharCodes);
@@ -144,10 +127,10 @@ alert("The default character type is lower case letters. Press OK to select othe
         charCodes[Math.floor(Math.random() * charCodes.length)];
       passwordCharacters.push(String.fromCharCode(characterCode));
     }
-    document.querySelector("#id4").innerHTML = "Your password length is: " + initialNumChar + " characters";
+    document.querySelector("#id4").innerHTML =
+      "Your password length is: " + initialNumChar + " characters";
     return passwordCharacters.join("");
   }
-
 
   // Function calls the generate password function
   function writePassword() {
@@ -162,14 +145,9 @@ alert("The default character type is lower case letters. Press OK to select othe
     passwordText.value = password;
   }
 
-
-
-
   writePassword();
-
-
-
 }
+// create a variable called generateBtn. Assign it the element of ID generate (ID of the button)
 // Add event listener to generate button.
 // When event "click" is detected on the button element, "generateBtn", run the write password function
 var generateBtn = document.querySelector("#generate");
