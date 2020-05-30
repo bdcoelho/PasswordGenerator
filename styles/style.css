@@ -136,3 +136,7 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+#id4 {
+  font-size: 14px;
+}

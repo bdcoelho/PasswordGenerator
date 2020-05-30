@@ -104,22 +104,48 @@ function passwordGen() {
   ) {
     let charCodes = lowerCharCodes;
 
+    function startUppercase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     // Edit HTML to display message to users after password generation. A message notifying the user of password criteria and length will be displayed
     document.querySelector("#id-heading").innerHTML = "Your password contains";
-    document.querySelector("#id0").innerHTML = "Lower case characters";
 
+    var listElement = document.createElement("LI");
+    listElement.setAttribute("style", "font-size:14px; font-style: normal;");
+    var listText = document.createTextNode("Lower case characters");
+    listElement.appendChild(listText);
+    document.getElementById("id-heading").appendChild(listElement);
 
     if (initialUppercase.Value) {
       charCodes = charCodes.concat(upperCharCodes);
-      document.querySelector("#id1").innerHTML = initialUppercase.name;
+      var listElement = document.createElement("LI");
+      listElement.setAttribute("style", "font-size:14px; font-style: normal;");
+      var listText = document.createTextNode(
+        startUppercase(initialUppercase.name)
+      );
+      listElement.appendChild(listText);
+      document.getElementById("id-heading").appendChild(listElement);
     }
     if (initialSpecialChars.Value) {
       charCodes = charCodes.concat(specialCharCodes);
-      document.querySelector("#id3").innerHTML = initialSpecialChars.name;
+      var listElement = document.createElement("LI");
+      listElement.setAttribute("style", "font-size:14px; font-style: normal;");
+      var listText = document.createTextNode(
+        startUppercase(initialSpecialChars.name)
+      );
+      listElement.appendChild(listText);
+      document.getElementById("id-heading").appendChild(listElement);
     }
     if (initialNumbers.Value) {
       charCodes = charCodes.concat(numberCharCodes);
-      document.querySelector("#id2").innerHTML = initialNumbers.name;
+      var listElement = document.createElement("LI");
+      listElement.setAttribute("style", "font-size:14px; font-style: normal;");
+      var listText = document.createTextNode(
+        startUppercase(initialNumbers.name)
+      );
+      listElement.appendChild(listText);
+      document.getElementById("id-heading").appendChild(listElement);
     }
 
     var passwordCharacters = [];
@@ -153,8 +179,3 @@ function passwordGen() {
 // When event "click" is detected on the button element, "generateBtn", run the write password function
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", passwordGen);
-
-
-
-
-// create li append li
