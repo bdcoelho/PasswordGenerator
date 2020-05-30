@@ -105,7 +105,9 @@ function passwordGen() {
     let charCodes = lowerCharCodes;
 
     // Edit HTML to display message to users after password generation. A message notifying the user of password criteria and length will be displayed
-    document.querySelector("#id0").innerHTML = "You have selected";
+    document.querySelector("#id-heading").innerHTML = "Your password contains";
+    document.querySelector("#id0").innerHTML = "Lower case characters";
+
 
     if (initialUppercase.Value) {
       charCodes = charCodes.concat(upperCharCodes);
@@ -151,3 +153,8 @@ function passwordGen() {
 // When event "click" is detected on the button element, "generateBtn", run the write password function
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", passwordGen);
+
+
+
+
+// create li append li
