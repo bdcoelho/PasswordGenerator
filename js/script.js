@@ -45,7 +45,10 @@ function passwordGen() {
       if (passwordCriteria[i] === null) break;
     }
     passwordCriteria[i].Value = passwordCriteria[i].UserInput === "Y";
-  }
+  };
+
+
+
   // For loop to pass each of the criteria (excluding number of characters) to the prompt and validation function.
   for (let i = 0; i < passwordCriteria.length; i++) {
     charValidation(i);
