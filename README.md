@@ -24,7 +24,8 @@ The program uses arrays of ASCII codes to group each set of characters. Once the
 
 ## Screenshots
 
-
+.\assets\InitialPage.png"
+.\assets\GeneratedPassword.png"
 
 ## Future work
 Additional features were considered and some were partially implemented. These were archived as they required improvement and further testing. Some additional features that may be added in the future are:
